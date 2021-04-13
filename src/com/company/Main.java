@@ -1,9 +1,8 @@
 package com.company;
 
+import com.company.models.Cart;
 import com.company.models.Product;
 import com.company.models.Variant;
-import com.company.models.VariantsBasedProduct;
-import com.company.models.WeightBasedProduct;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Creates variantsBasedProduct
+        /*
+
+        Creates variantsBasedProduct
         List<Variant> variants = new ArrayList<>(
                 Arrays.asList(new Variant("500g",90),
                         new Variant("1Kg",160))
@@ -43,5 +44,43 @@ public class Main {
         );
 
         System.out.println(products);
+
+         */
+
+
+        /*
+            Adding products as an admin(as per now)
+         */
+        Product apple = new Product(" ","Apple",0.5f,100);
+        Product orange = new Product(" ","Orange",0.5f,50);
+        Product kiwi = new Product(" ","Kiwi",new ArrayList<>(
+                Arrays.asList(
+                        new Variant("500g",90),
+                        new Variant("1Kg",160)
+                        )
+        ));
+
+        /*
+            Checking the working of the functions.
+         */
+        Cart cart = new Cart();
+
+        /*
+            Adding products into the cart.
+         */
+        cart.add(apple,2.5f);
+        cart.add(kiwi,kiwi.variants.get(1),2);
+        cart.add(orange,5f);
+        System.out.println(cart);
+
+        /*
+            Using removeAll and decrement functions to check for their working.
+         */
+        cart.removeAll(apple);
+        System.out.println(cart);
+        cart.decrement(kiwi,kiwi.variants.get(1));
+        System.out.println(cart);
+        cart.decrement(kiwi,kiwi.variants.get(1));
+        System.out.println(cart);
     }
 }
