@@ -1,14 +1,20 @@
-package com.company.models;
+package com.company.task4_2_2.models;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class Product {
 
     /*
+        This is to store the products and perform the operations dynamically.
+     */
+    public static HashMap<String,Product> products = new HashMap<>();
+
+    /*
         Common properties for both types of products
      */
-    String image, name;
+    public String image, name;
 
     /*
         For variant based product
@@ -18,7 +24,7 @@ public class Product {
     /*
         For quantity based product
      */
-    float minQty, pricePerKg;
+    public float minQty, pricePerKg;
 
     /*
         This is to find what type of product it is.
@@ -45,5 +51,15 @@ public class Product {
         this.name = name;
         this.minQty = minQty;
         this.pricePerKg = pricePerKg;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{ \n" +
+                "name = '" + name + '\'' +
+                ", variants = " + variants +
+                ", minQty = " + minQty +
+                ", pricePerKg = " + pricePerKg +
+                '}';
     }
 }

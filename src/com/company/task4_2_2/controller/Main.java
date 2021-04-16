@@ -1,12 +1,11 @@
-package com.company;
+package com.company.task4_2_2.controller;
 
-import com.company.models.Cart;
-import com.company.models.Product;
-import com.company.models.Variant;
+import com.company.task4_2_2.models.Product;
+import com.company.task4_2_2.models.Variant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 public class Main {
 
@@ -51,7 +50,7 @@ public class Main {
         /*
             Adding products as an admin(as per now)
          */
-        Product apple = new Product(" ","Apple",0.5f,100);
+        /*Product apple = new Product(" ","Apple",0.5f,100);
         Product orange = new Product(" ","Orange",0.5f,50);
         Product kiwi = new Product(" ","Kiwi",new ArrayList<>(
                 Arrays.asList(
@@ -60,27 +59,40 @@ public class Main {
                         )
         ));
 
-        /*
+
             Checking the working of the functions.
-         */
+
         Cart cart = new Cart();
 
-        /*
+
             Adding products into the cart.
-         */
+
         cart.add(apple,2.5f);
         cart.add(kiwi,kiwi.variants.get(1),2);
         cart.add(orange,5f);
         System.out.println(cart);
 
-        /*
+
             Using removeAll and decrement functions to check for their working.
-         */
+
         cart.removeAll(apple);
         System.out.println(cart);
         cart.decrement(kiwi,kiwi.variants.get(1));
         System.out.println(cart);
         cart.decrement(kiwi,kiwi.variants.get(1));
-        System.out.println(cart);
+        System.out.println(cart);*/
+
+        Product apple = new Product(" ","Apple",0.5f,100);
+        Product kiwi = new Product(" ","Kiwi",new ArrayList<>(
+                Arrays.asList(
+                        new Variant("500g",90),
+                        new Variant("1Kg",160)
+                )
+        ));
+
+        Product.products.put("apple",apple);
+        Product.products.put("kiwi",kiwi);
+
+        SelectedOptionManager.startChooser();
     }
 }

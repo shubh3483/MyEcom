@@ -1,10 +1,10 @@
-package com.company.models;
+package com.company.task4_2_2.models;
 
 import java.util.HashMap;
 
 public class Cart {
 
-    HashMap<String,CartItem> cartItems = new HashMap<>();
+    public HashMap<String, CartItem> cartItems = new HashMap<>();
     float total, noOfItems;
 
 
@@ -32,7 +32,7 @@ public class Cart {
      */
     public void add(Product product, Variant variant, float qty){
 
-        String key = product.name + " " + variant.name;
+        String key = product.name + " " + variant.variantType;
 
         //Checking whether that the product is already present in the cart or not.
         if(cartItems.containsKey(key)){
@@ -63,7 +63,7 @@ public class Cart {
     /*
         To remove weight based product
      */
-    private void removeAllWeightBasedProduce(Product product) {
+    public void removeAllWeightBasedProduce(Product product) {
         total -= cartItems.get(product.name).cost();
         noOfItems--;
         cartItems.remove(product.name);
@@ -79,7 +79,7 @@ public class Cart {
             Using for loop because we want to delete all the variants of that particular product.
          */
         for (Variant variant : product.variants) {
-            String key = product.name + " " + variant.name;
+            String key = product.name + " " + variant.variantType;
             if(cartItems.containsKey(key)){
                 total -= cartItems.get(key).cost();
                 noOfItems--;
@@ -94,16 +94,43 @@ public class Cart {
     /*
         This function is used when we want to decrease the quantity of a particular variant
      */
-    public void decrement(Product product, Variant variant){
-        String key = product.name + " " + variant.name;
+    public void decrementVBP(Product product, Variant variant){
+        String key = product.name + " " + variant.variantType;
         cartItems.get(key).qty--;
         total -= variant.price;
         if(cartItems.get(key).qty == 0){
             cartItems.remove(key);
             noOfItems--;
         }
-
     }
+
+    public void incrementVBP(Product product, Variant variant){
+        String key = product.name + " " + variant.variantType;
+        cartItems.get(key).qty++;
+        total += variant.price;
+    }
+
+    public void changeQtyOfWBP(Product product, float qty){
+        total-= cartItems.get(product.name).cost();
+        cartItems.get(product.name).qty = qty;
+        total+= product.pricePerKg * qty;
+    }
+
+    /*public void incrementWBP(Product product,float qty){
+        if(cartItems.containsKey(product.name)){
+            total+= product.pricePerKg * qty;
+        }
+    }
+
+    public void decrementWBP(Product product,float qty){
+        if(cartItems.containsKey(product.name)){
+            total-= product.pricePerKg * qty;
+        }
+        if(cartItems.get(product.name).qty == 0){
+            cartItems.remove(product.name);
+            noOfItems--;
+        }
+    }*/
 
     @Override
     public String toString() {
