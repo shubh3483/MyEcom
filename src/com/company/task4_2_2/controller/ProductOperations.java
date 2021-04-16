@@ -45,9 +45,12 @@ public class ProductOperations {
      */
 
     void inputVBP(){
+        int noOfVariants;
         System.out.println("Enter name, list of variants");
         name = scanner.next();
-        for(int i=1;i<=2;i++)
+        System.out.println("Enter how many variants you want to enter");
+        noOfVariants = scanner.nextInt();
+        for(int i=1;i<=noOfVariants;i++)
         {
             System.out.println("Enter "+ i + " variant name and variant price");
             variantName = scanner.next();
@@ -66,7 +69,7 @@ public class ProductOperations {
 
     public void addProduct(Product product){
         String key = product.name;
-        Product.products.put(key,product);
+        Main.products.put(key,product);
     }
 
     /**
@@ -77,14 +80,14 @@ public class ProductOperations {
         System.out.println("Enter the product name");
         name = scanner.next();
         String key = name;
-        Product product = Product.products.get(key);
+        Product product = Main.products.get(key);
 
         /*
             If the product type is WB then we can directly remove this product.
          */
 
         if(product.type == ProductType.TYPE_WB){
-            Product.products.remove(key);
+            Main.products.remove(key);
         }
 
         /*
@@ -104,7 +107,7 @@ public class ProductOperations {
 
             //If chooses to remove the complete product
             if(removeChoicer.equals("A")){
-                Product.products.remove(key);
+                Main.products.remove(key);
             }
 
             //Asking the variant type to remove a particular variant of that product.
@@ -127,7 +130,7 @@ public class ProductOperations {
         System.out.println("Enter the product name");
         name = scanner.next();
         String key = name;
-        Product product = Product.products.get(key);
+        Product product = Main.products.get(key);
 
         /*
             If the product type is WB then we can edit it the following way.
@@ -158,12 +161,33 @@ public class ProductOperations {
     /**
      *  This function will display all the products which a user can buy.
      */
-    public static void showAllProducts(){
-        for (Map.Entry mapElement : Product.products.entrySet()){
+    public void showAllProducts(){
+        System.out.println("Available products");
+        for (Map.Entry mapElement : Main.products.entrySet()){
             Product product = (Product) mapElement.getValue();
-            System.out.println(product);
+            if(product.type == ProductType.TYPE_WB)
+                printWBP(product);
+            else printVBP(product);
         }
     }
 
+
+    /**
+     * This function is for printing the variant based product
+     * @param product
+     */
+    private void printVBP(Product product) {
+        System.out.println("Product Name : " + product.name + "\n\t{ Variants : \n\t" + product.variants + "\n");
+    }
+
+
+    /**
+     * This function is for printing weight based product
+     * @param product
+     */
+    void printWBP(Product product){
+        System.out.println("Product Name : " + product.name + "\n\t{ Minimum quantity : " + product.minQty + "\n\t " +
+                " Price : " + product.pricePerKg + " }\n");
+    }
 
 }

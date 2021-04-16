@@ -15,6 +15,6 @@ public class Variant {
         return "{ " +
                 "variant type = '" + variantType + '\'' +
                 ", price = " + price +
-                '}';
+                "}\n";
     }
 }

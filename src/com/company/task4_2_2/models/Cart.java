@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Cart {
 
     public HashMap<String, CartItem> cartItems = new HashMap<>();
-    float total, noOfItems;
+    public float total, noOfItems;
 
 
     /*
@@ -134,10 +134,7 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart\n" +
-                cartItems +
-                ",\n total=" + total +
-                ",\n noOfItems=" + noOfItems +
-                '}';
+        return cartItems.values()
+                + String.format("\ntotal %.2f items (Rs. %.2f)",noOfItems,total);
     }
 }

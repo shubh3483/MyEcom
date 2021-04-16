@@ -13,7 +13,7 @@ public class SelectedOptionManager {
         String message = "Choose corresponding number to perform the operation\n" +
                 " 1 - Add a product\n 2 - Edit a product\n 3 - Delete a product\n 4 - Add item to cart\n" +
                 " 5 - Edit item in cart\n 6 - Delete item from cart\n 7 - See all products\n 8 - Go to cart \n" +
-                " 0 - For exit";
+                " 0 - For exit\n Enter your choice : ";
 
         System.out.println(message);
         inputChecker = scanner.nextInt();
@@ -52,7 +52,7 @@ public class SelectedOptionManager {
                 case 6 : cartOperations.deleteItemFromCart();
                     break;
 
-                case 7 : ProductOperations.showAllProducts();
+                case 7 : productOperations.showAllProducts();
                     break;
 
                 case 8 : cartOperations.showCart();

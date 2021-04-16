@@ -18,6 +18,7 @@ public class CartItem {
 
     @Override
     public String toString() {
-        return String.format(" Unit Price : %.2f, Quantity %.2f, Total %.2f\n",untPrice,qty,untPrice * qty );
+        return "\n" + name +
+                String.format(", (%.2f X %.2f = %.2f",untPrice,qty,untPrice * qty ) + " )";
     }
 }

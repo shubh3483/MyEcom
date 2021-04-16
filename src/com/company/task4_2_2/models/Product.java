@@ -6,10 +6,7 @@ import java.util.List;
 
 public class Product {
 
-    /*
-        This is to store the products and perform the operations dynamically.
-     */
-    public static HashMap<String,Product> products = new HashMap<>();
+
 
     /*
         Common properties for both types of products

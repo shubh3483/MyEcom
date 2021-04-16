@@ -30,7 +30,7 @@ public class CartOperations {
         System.out.println("Enter product name to be entered into the cart");
         name = scanner.next();
         String key = name;
-        Product product = Product.products.get(key);
+        Product product = Main.products.get(key);
         if(product.type == ProductType.TYPE_WB){
             System.out.println("It will be given on weight basis.");
             System.out.println("Enter quantity in Kg");
@@ -56,7 +56,7 @@ public class CartOperations {
         System.out.println("Enter name of the product you want to edit from cart");
         name = scanner.next();
         String key = name;
-        Product product = Product.products.get(key);
+        Product product = Main.products.get(key);
         if (product.type == ProductType.TYPE_WB){
             System.out.println("Enter new quantity");
             qty = scanner.nextFloat();
@@ -87,7 +87,7 @@ public class CartOperations {
         System.out.println("Enter name of the product you want to remove from cart");
         name = scanner.next();
         String key = name;
-        Product product = Product.products.get(key);
+        Product product = Main.products.get(key);
         if (cart.cartItems.containsKey(key)) {
 
             /*

@@ -5,9 +5,12 @@ import com.company.task4_2_2.models.Variant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class Main {
+
+     public static HashMap<String,Product> products = new HashMap<>();
 
     public static void main(String[] args) {
 
@@ -82,6 +85,11 @@ public class Main {
         cart.decrement(kiwi,kiwi.variants.get(1));
         System.out.println(cart);*/
 
+        /*
+        This is to store the products and perform the operations dynamically.
+     */
+
+
         Product apple = new Product(" ","Apple",0.5f,100);
         Product kiwi = new Product(" ","Kiwi",new ArrayList<>(
                 Arrays.asList(
@@ -90,8 +98,8 @@ public class Main {
                 )
         ));
 
-        Product.products.put("apple",apple);
-        Product.products.put("kiwi",kiwi);
+        products.put("apple",apple);
+        products.put("kiwi",kiwi);
 
         SelectedOptionManager.startChooser();
     }
